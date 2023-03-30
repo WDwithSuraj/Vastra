@@ -1,5 +1,10 @@
 import {Box, Button, Flex, Image } from '@chakra-ui/react'
 import { useState } from 'react';
+
+
+
+
+
 function MainContent() {
     const [count, setCount] = useState(0)
     let carausalImage = ["https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_02_CAR_b_ACC_Sunglasses.jpg?scl=1&fmt=webp&wid=1440",
@@ -7,14 +12,24 @@ function MainContent() {
         "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_02_CAR_a_RTW_VacaSwim.jpg?scl=1&fmt=webp&wid=1440",
         "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_02_CAR_c_MEN_2023Resort.jpg?scl=1&fmt=webp&wid=1440",
         "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_02_CAR_e_MULTI_v2FemaleFounders.jpg?scl=1&fmt=webp&wid=1440"]
-    //    let cleanUp =  setInterval(()=> {setCount(count + 1)},[2000]);
-        if(count >= carausalImage.length){
-            setCount(0)
-        }else if(count <= -1){
-            setCount(carausalImage.length)
+    
+
+        
+      const handlePrevious = () => {
+        if(count <= 0){
+            setCount(carausalImage.length-1)
+        }else {
+            setCount(count - 1)
         }
-        console.log(count)
-      
+      }
+      const handleNext = () => {
+       if(count >= carausalImage.length-1){
+            setCount(0)
+        }else {
+            setCount(count + 1)
+        }
+      }
+
     return(
         <Box>
             <Box margin={"5"}>
@@ -23,9 +38,9 @@ function MainContent() {
             </Box>
             <Box>
                 <Flex alignItems={"center"} justifyContent="center"> 
-                    <Button onClick={()=> setCount(count - 1)}><i class="fa-solid fa-chevron-left"></i></Button>
+                    <Button onClick={handlePrevious}><i class="fa-solid fa-chevron-left"></i></Button>
                     <Image src={carausalImage[count]} width="93%"></Image>
-                    <Button onClick={()=> setCount(count + 1)}><i class="fa-solid fa-chevron-right"></i></Button>
+                    <Button onClick={handleNext}><i class="fa-solid fa-chevron-right"></i></Button>
                 </Flex>
             </Box>
         </Box>
