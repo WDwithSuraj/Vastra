@@ -1,6 +1,13 @@
 import  '../../css/Navbar.module.css'
-function Navbar(){
-   
+import {Box, Flex, Text} from '@chakra-ui/react'
+function Navbar({navList}){
+    return (
+        <Flex justifyContent="space-around" border={"1px solid #E0E0E0"} padding="3px" >
+           
+                {navList.map((list)=> <Text padding={"5px"} _hover={{color : '#81C784', bgColor:'#E8F5E9'}}>{list}</Text>)}
+           
+        </Flex>
+    )
 }
 
 export default Navbar
