@@ -1,11 +1,13 @@
 import HeaderNav from "./HeaderNav";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
+import WithSubnavigation from "./Nav";
 import MainContent from "./MainContent";
 function Home(){
     return(
         <>
         <HeaderNav/>
-        <Navbar navList={["MEN", "SHOES", "HANDBAGS", "JEWELRY & ACCESSORIES", "WOMEN", "KIDS", "Home" ]}/>
+        {/* <Navbar navList={["Men", "Shoes", "Handbags", "Jewelry & Accessories", "Women", "Kids" ]}/> */}
+        <WithSubnavigation/>
         <MainContent/>
         </>
     )
