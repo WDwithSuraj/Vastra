@@ -1,7 +1,7 @@
 import logoImage from '../../Image/Vastra.jpg'
 import {Box, Button, Flex, Image, Input, Spacer} from '@chakra-ui/react'
 function HeaderNav(){
-    return <Flex align="center" h='80px' border="1px solid black">
+    return <Flex align="center" h='70px'marginBottom={'0'}>
         <Box>
         <Image src={logoImage} w="120px" ml="20px"/>
         </Box>
