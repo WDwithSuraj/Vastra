@@ -38,9 +38,9 @@ function MainContent() {
             </Box>
             <Box>
                 <Flex alignItems={"center"} justifyContent="center"> 
-                    <Button onClick={handlePrevious}><i class="fa-solid fa-chevron-left"></i></Button>
+                    <Button onClick={handlePrevious} height="60px"><i class="fa-solid fa-chevron-left"></i></Button>
                     <Image src={carausalImage[count]} width="93%"></Image>
-                    <Button onClick={handleNext}><i class="fa-solid fa-chevron-right"></i></Button>
+                    <Button onClick={handleNext} height="60px" ><i class="fa-solid fa-chevron-right"></i></Button>
                 </Flex>
             </Box>
         </Box>
