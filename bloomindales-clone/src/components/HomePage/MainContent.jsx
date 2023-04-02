@@ -1,7 +1,8 @@
 import {Box, Button, Flex, Image } from '@chakra-ui/react'
-import { useState } from 'react';
-
-
+import { useEffect, useState, useContext } from 'react';
+import { CartContext } from '../../context/CartContextProvider';
+import ProductCard from '../Product Page/ProductCard';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,9 +13,8 @@ function MainContent() {
         "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_02_CAR_a_RTW_VacaSwim.jpg?scl=1&fmt=webp&wid=1440",
         "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_02_CAR_c_MEN_2023Resort.jpg?scl=1&fmt=webp&wid=1440",
         "https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_02_CAR_e_MULTI_v2FemaleFounders.jpg?scl=1&fmt=webp&wid=1440"]
+        const navigate = useNavigate()
     
-
-        
       const handlePrevious = () => {
         if(count <= 0){
             setCount(carausalImage.length-1)
@@ -29,9 +29,15 @@ function MainContent() {
             setCount(count + 1)
         }
       }
+      const {searchProduct,setSearchProduct} = useContext(CartContext)
+    //   useEffect(()=>{
+    //         setSearchProduct('')
+    //   })
+    return(<>
 
-    return(
-        <Box>
+       {  searchProduct.length == 0?
+       
+       ( <Box>
             <Box margin={"5"}>
                 <Image src="https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_01b_SALE_FnF_INTL.jpg?scl=1&fmt=webp&wid=1440" alt='.'>
                 </Image>
@@ -57,7 +63,13 @@ function MainContent() {
             <Box w="90%" margin={'auto'} mt={'50px'} mb={'50px'}>
                 <Image src="https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_06_MULTI_Essentials.jpg?scl=1&fmt=webp&wid=1440"/>
             </Box>
-        </Box>
+        </Box>) : <>
+        <Button onClick={()=> setSearchProduct([]) } mt={'10px'}>Back</Button>
+        <Box mt="20px" display={'grid'} gridTemplateColumns='repeat(4,1fr)'
+    gap= "20px">
+                 {searchProduct.map((item)=> <ProductCard key={item.id} {...item}/>) } 
+            </Box></> }
+        </>
     )
 }
 

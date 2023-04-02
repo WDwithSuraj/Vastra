@@ -19,7 +19,8 @@ import { useState } from 'react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import {auth} from '../../firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import HeaderNav from '../HomePage/HeaderNav';
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
 const [email, setEmail] = useState('');
@@ -55,7 +56,8 @@ const onSignUp = async () => {
         })
         .catch((error)=> console.log(error))
 }
-  return (
+  return (<>
+  <HeaderNav/>
     <Flex
       minH={'100vh'}
       align={'center'}
@@ -131,5 +133,6 @@ const onSignUp = async () => {
         </Box>
       </Stack>
     </Flex>
+    </>
   );
 }

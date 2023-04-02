@@ -1,13 +1,13 @@
 .prodcutContainer {
    /* font-size: 20px; */
    display: flex;
-   border : 2px solid black;
+   /* border : 2px solid black; */
    padding: 5px;
    gap: 10px;
    margin-top: 50px;
 }
 .filterAndSortContainer {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 20%;
     padding: 7px;
 }
@@ -18,7 +18,7 @@
     font-weight: 500;
 }
 .productRenderArea{
-    border: 2px solid green;
+    /* border: 2px solid green; */
     width: 80%;
     display: grid;
     grid-template-columns: repeat(4,1fr);
