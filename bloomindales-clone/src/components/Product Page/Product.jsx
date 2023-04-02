@@ -6,8 +6,8 @@ import HeaderNav from '../HomePage/HeaderNav';
 import Navbar from '../HomePage/Navbar';
 import { AllPages } from '../HomePage/AllPages';
 import {Spinner, Button, Select, Checkbox} from '@chakra-ui/react'
-const getData = (page,limit) => {
-   return axios.get(`https://shy-puce-binturong-ring.cyclic.app/mensProduct?_limit=${limit}&_page=${page}`)
+const getData = (page,limit,sortTo,soryBy) => {
+   return axios.get(`https://shy-puce-binturong-ring.cyclic.app/mensProduct?_page=${page}$_limit=${limit}&_sort=${soryBy}&_order=${sortTo}`)
   
 }
 
@@ -18,11 +18,13 @@ export default function Product() {
   const [page , setPage] = useState(1)
   const [totalPage, setTotalPage] = useState(1);
   const [limit, setLimit] = useState(12)
-const fetchAndUpdata = async (page,limit) => {
+  const [soryBy, setSortBy] = useState('')
+  const [sortTo, setSortTo] = useState('')
+  const [cate, setCategory] = useState('')
+const fetchAndUpdata = async (page,limit,sortTo,soryBy) => {
    try {
     setLoading(true)
-    const res = await getData(page,limit);
-    console.log()
+    const res = await getData(page,limit,sortTo,soryBy);
    setProductData( res.data)
    setTotalPage((res.headers['x-total-count'])/limit)
    setLoading(false)
@@ -33,10 +35,30 @@ const fetchAndUpdata = async (page,limit) => {
   // setTimeout(()=> {
   //   console.log(totalPage)
   // },3000)
+const filterProductByCategory = (cate) => {
+    const updateData = productData.filter((ele)=> {
+      if(ele.category === cate){
+           return ele
+      }
+    })
+    setProductData(updateData)
+}
 
+  const handleCategory = (e) => {
+    setCategory(e.target.value)
+  } 
+const handleChange = (e) => {
+    setSortTo(e.target.value);
+    console.log(e.target.value)
+    setSortBy('price')
+}
   useEffect(()=> {
-   fetchAndUpdata(page,limit)
-  },[page,limit])
+   fetchAndUpdata(page,limit,sortTo,soryBy)
+  
+  },[page,limit,sortTo,soryBy ])
+  useEffect(()=>{
+     filterProductByCategory(cate)
+  },[cate])
     return (<>
     <HeaderNav/>
       <Navbar navList={AllPages}/>
@@ -44,23 +66,23 @@ const fetchAndUpdata = async (page,limit) => {
         <div className="filterAndSortContainer">
             <div className="filterbyCategory">
                <h2>CATEGORY</h2>
-                <Select>
+                <Select onChange={handleCategory}>
                   <option value="">Select Any Category</option>
                   <option value="Jacket">Jacket</option>
                   <option value="Shoes">Shoes</option>
-                  <option value="Jacket">Belt</option>
-                  <option value="Jacket">Watch</option>
-                  <option value="Jacket">Wallet</option>
+                  <option value="Belt">Belt</option>
+                  <option value="Watch">Watch</option>
+                  <option value="Wallet">Wallet</option>
                 </Select>
             </div>
             <h2>FILTER BY</h2>
-            <div className="filterByPrice">
+            <div className="filterByPrice" >
                <h4>PRICE</h4>
-              <Select>
+              <Select onChange={handleChange}>
                 <option value="">Select Price </option>
                 <option value="featured">Featured</option>
-                <option value="l2h">Low to Hight</option>
-                <option value="h2l">High to Low</option>
+                <option value="asc">Low to Hight</option>
+                <option value="desc">High to Low</option>
                 <option value="newArivals">New Arrivals</option>
                 <option value="bestSeller">Best</option>
               </Select>

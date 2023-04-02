@@ -10,6 +10,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import HeaderNav from '../HomePage/HeaderNav';
 import {Link, useNavigate} from 'react-router-dom'
 import {useState} from 'react';
 import {auth} from '../../firebase'
@@ -30,7 +31,8 @@ export default function Login() {
 
        
     }
-  return (
+  return (<>
+  <HeaderNav/>
     <Flex
       minH={'100vh'}
       align={'center'}
@@ -79,5 +81,6 @@ export default function Login() {
         </Box>
       </Stack>
     </Flex>
+    </>
   );
 }
