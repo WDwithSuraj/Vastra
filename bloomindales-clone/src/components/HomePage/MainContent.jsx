@@ -43,6 +43,20 @@ function MainContent() {
                     <Button onClick={handleNext} height="60px" ><i class="fa-solid fa-chevron-right"></i></Button>
                 </Flex>
             </Box>
+            <Box display="flex" justifyContent={'space-between'} width={"90%"} margin={"auto"} mt={'50px'} mb={"25px"}>
+                <Box>
+                    <Image src="https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_03a_TB_Staud.jpg?scl=1&fmt=webp&wid=720"/>
+                </Box>
+                <Box>
+                    <Image src="https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_03b_TB_LAgence.jpg?scl=1&fmt=webp&wid=720"/>
+                </Box>
+            </Box>
+            <Box mt="50px" mb={'50px'}>
+                <Image src="https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_04_MULTI_FeatShops.jpg?scl=1&fmt=webp&wid=1440"/>
+            </Box>
+            <Box w="90%" margin={'auto'} mt={'50px'} mb={'50px'}>
+                <Image src="https://images.bloomingdalesassets.com/is/image/BcomMedia/media/0324_0402_D_06_MULTI_Essentials.jpg?scl=1&fmt=webp&wid=1440"/>
+            </Box>
         </Box>
     )
 }
