@@ -1,4 +1,4 @@
-import  '../../css/Navbar.module.css'
+
 import {Box, Flex, Text} from '@chakra-ui/react'
 import {Link} from 'react-router-dom'
 function Navbar({navList}){
