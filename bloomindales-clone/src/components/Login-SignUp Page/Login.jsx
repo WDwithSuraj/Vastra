@@ -57,7 +57,7 @@ export default function Login() {
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
+              <Input type="password" v />
             </FormControl>
             <Stack spacing={10}>
               <Stack

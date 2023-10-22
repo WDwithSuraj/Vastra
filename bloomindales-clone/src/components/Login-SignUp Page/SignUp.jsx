@@ -28,34 +28,34 @@ const [password, setPassword] = useState('')
 const [firstName, setFirstName] = useState('');
 const [lastName, setLastName] = useState('')
 const navigate = useNavigate()
-const onSignUp = async () => {
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredentials)=> {
-            const res = fetch(`https://vastra-project-default-rtdb.firebaseio.com/userDataRecords.json`,{
-                method : "POST",
-                headers : {
-                    "Content-type" : "application/json"
-                },
-                body : JSON.stringify({
-                    firstName : firstName,
-                    lastName : lastName,
-                    email : email,
-                    password : password
-                })
-            })
-            if(res){
-               Swal.fire(
-         'Good job!',
-        'You have been registered!',
-      'success'
-        )
-         setTimeout(()=>{
-            navigate('/login')
-         },1000)
-            }
-        })
-        .catch((error)=> console.log(error))
-}
+  const onSignUp = async () => {
+          createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredentials)=> {
+              const res = fetch(`https://vastra-project-default-rtdb.firebaseio.com/userDataRecords.json`,{
+                  method : "POST",
+                  headers : {
+                      "Content-type" : "application/json"
+                  },
+                  body : JSON.stringify({
+                      firstName : firstName,
+                      lastName : lastName,
+                      email : email,
+                      password : password
+                  })
+              })
+              if(res){
+                Swal.fire(
+          'Good job!',
+          'You have been registered!',
+        'success'
+          )
+          setTimeout(()=>{
+              navigate('/login')
+          },1000)
+              }
+          })
+          .catch((error)=> console.log(error))
+  }
   return (<>
   <HeaderNav/>
     <Flex
